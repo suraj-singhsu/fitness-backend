@@ -18,19 +18,20 @@
 		<script type="text/javascript" src="js/customjs.js"></script>
     </head>
     <body class="focused-for animated-content pt-xl">
-    	
+	@section('content')
 		<div class="col-sm-4 col-sm-offset-4">
 			<a href="index.php" class="login-logo text-center"><h2> <b>VIKAS MOBILE SHOP</b> </h2></a>
 			<div class="panel panel-default">
 				<div class="panel-heading"><h2>Login Form</h2></div>
 				<div class="panel-body">
+				<!--  -->
 					<form onsubmit="return false" class="form-horizontal" id="validate-form">
 						<div class="form-group mb-md">
 	                        <div class="col-sm-12">
 	                        	<label><b>Username Or Email ID:</b></label>
 	                        	<div class="input-group">							
 									<span class="input-group-addon"><i class="ti ti-user"></i></span>
-									<input type="text" name="username" id="username" class="form-control" placeholder="Enter Username Or Email ID..">
+									<input type="text" name="name" id="username" class="form-control" placeholder="Enter Username Or Email ID..">
 								</div>
 	                        </div>
 						</div>
@@ -39,7 +40,7 @@
 	                        	<label><b>Password:</b></label>
 	                        	<div class="input-group">
 									<span class="input-group-addon"><i class="ti ti-key"></i></span>
-									<input type="password" name="password" id="password" class="form-control" placeholder="Enter Password Here..">
+									<input type="password" name="description" id="password" class="form-control" placeholder="Enter Password Here..">
 								</div>
 	                        </div>
 						</div>
@@ -49,6 +50,7 @@
 							</div>
 						</div>
 						<center>
+							
 							<input type="submit" id="btn_submit" value="LOGIN" class="btn btn-green" onclick="check_login('validate-form','login_cod.php')">
 							<input type="reset" value="Cancel" class="btn btn-default">
 						</center>
