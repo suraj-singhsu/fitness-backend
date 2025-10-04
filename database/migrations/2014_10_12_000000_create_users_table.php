@@ -17,9 +17,23 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            
+            $table->string('phone')->nullable()->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedBigInteger('role_id')->default(2)->comment('1=sadmin, 2=user');
+
+            // Step 2: Add foreign key
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+
+            $table->string('profile_image')->nullable();
+            $table->boolean('status')->default(true);
+            
+            // Verification flags
+            $table->boolean('is_email_verified')->default(false);
+            $table->boolean('is_phone_verified')->default(false);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

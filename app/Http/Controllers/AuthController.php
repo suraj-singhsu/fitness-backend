@@ -5,11 +5,30 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
-    public function index()
+    public function login(Request $request)
     {
-        return view('login');
+       
+        if ($request->isMethod('get')) {
+            return view('login');
+        }// Validate request
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+    
+        // Attempt login
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+            // dd($user);
+           return redirect()->route('admin.dashboard');
+        }
     }  
       
     public function customLogin(Request $request){

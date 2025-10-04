@@ -1,90 +1,101 @@
-<!DOCTYPE html>
-<html lang="en" class="coming-soon">
-	<head>
-	    <meta charset="utf-8">
-	    <title>Login Form</title>
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	    <meta name="apple-mobile-web-app-capable" content="yes">
-	    <meta name="apple-touch-fullscreen" content="yes">
-	    <meta name="author" content="IMSs">
-	    
-	    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600'>
-    	
-    	<link rel="stylesheet" type="text/css" href="plugins/iCheck/skins/minimal/blue.css">
-    	<link type="text/css" rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
-    	<link type="text/css" rel="stylesheet" href="fonts/themify-icons/themify-icons.css"><!-- Themify Icons -->
-    	<link type="text/css" rel="stylesheet" href="css/styles.css">
-		<script type="text/javascript" src="js/customjs.js"></script>
-    </head>
-    <body class="focused-for animated-content pt-xl">
-	@section('content')
-		<div class="col-sm-4 col-sm-offset-4">
-			<a href="index.php" class="login-logo text-center"><h2> <b>VIKAS MOBILE SHOP</b> </h2></a>
-			<div class="panel panel-default">
-				<div class="panel-heading"><h2>Login Form</h2></div>
-				<div class="panel-body">
-				<!--  -->
-					<form onsubmit="return false" class="form-horizontal" id="validate-form">
-						<div class="form-group mb-md">
-	                        <div class="col-sm-12">
-	                        	<label><b>Username Or Email ID:</b></label>
-	                        	<div class="input-group">							
-									<span class="input-group-addon"><i class="ti ti-user"></i></span>
-									<input type="text" name="name" id="username" class="form-control" placeholder="Enter Username Or Email ID..">
-								</div>
-	                        </div>
-						</div>
-						<div class="form-group mb-xs">
-	                        <div class="col-sm-12">
-	                        	<label><b>Password:</b></label>
-	                        	<div class="input-group">
-									<span class="input-group-addon"><i class="ti ti-key"></i></span>
-									<input type="password" name="description" id="password" class="form-control" placeholder="Enter Password Here..">
-								</div>
-	                        </div>
-						</div>
-						<div class="row mt mb">
-							<div class="col-sm-12">
-								<a href="forgotpassword.php" class="pull-left">Forgot password?</a>
-							</div>
-						</div>
-						<center>
-							
-							<input type="submit" id="btn_submit" value="LOGIN" class="btn btn-green" onclick="check_login('validate-form','login_cod.php')">
-							<input type="reset" value="Cancel" class="btn btn-default">
-						</center>
-					</form>
-				</div>
-			</div>
-		</div>
-			
-		<!-- Load jQuery -->
-		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-		<!-- Load jQueryUI -->
-		<script type="text/javascript" src="js/jqueryui-1.10.3.min.js"></script>
-		<!-- Load Bootstrap -->			
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<!-- Load Enquire -->	
-		<script type="text/javascript" src="js/enquire.min.js"></script>
-		<!-- Load Velocity for Animated Content -->
-		<script type="text/javascript" src="plugins/velocityjs/velocity.min.js"></script>
-		<script type="text/javascript" src="plugins/velocityjs/velocity.ui.min.js"></script>
-		<!-- Wijet -->
-		<script type="text/javascript" src="plugins/wijets/wijets.js"></script>     						
-		<!-- Code Prettifier  -->
-		<script type="text/javascript" src="plugins/codeprettifier/prettify.js"></script>
-		<!-- Swith/Toggle Button -->
-		<script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.js"></script>
-		<!-- Bootstrap Tabdrop -->
-		<script type="text/javascript" src="plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js"></script>  
-		<!-- iCheck -->
-		<script type="text/javascript" src="plugins/iCheck/icheck.min.js"></script>
-		<!-- nano scroller -->
-		<script type="text/javascript" src="plugins/nanoScroller/js/jquery.nanoscroller.min.js"></script> 
-		<script type="text/javascript" src="js/application.js"></script>
-		<script type="text/javascript" src="demo/demo.js"></script>
-		<script type="text/javascript" src="demo/demo-switcher.js"></script> 
-    	<!-- End loading page level scripts-->
-    </body>
-</html>
+@extends('admin.admin-master-layout1')
+@section('before-login-section')
+<div class="focused-form">
+    <div class="container" id="login-form">
+        <a href="javascript:void(0)" class="login-logo"><h2> <b>Fitness Admin</b> </h2></a>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-primary	">
+                    <div class="panel-heading"><h2>Login Form</h2></div>
+                    <div class="panel-body">
+                        <form action="{{ route('login') }}" class="form-horizontal" method="post">
+							@csrf
+                            <div class="form-group mb-md">
+                                <div class="col-xs-12">
+                                    <div class="input-group">							
+                                        <span class="input-group-addon"><i class="ti ti-user"></i></span>
+                                        <input type="text" name="email" id="username" value="sadmin@yopmail.com" class="form-control" placeholder="Username Or Email ID" >
+                                    </div>
+									@error('email')
+										<span class="text-danger">{{ $message }}</span>
+									@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-md">
+                                <div class="col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="ti ti-key"></i>
+                                        </span>
+                                        <input type="password" name="password" id="password" value="12345678" class="form-control" placeholder="Password" >
+                                    </div>
+									@error('password')
+										<span class="text-danger">{{ $message }}</span>
+									@enderror
+                                </div>
+                            </div>
+                            <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
+                            <div class="form-group mb-n">
+                                <div class="col-xs-12">
+                                    <a href="forgotpassword.php" class="pull-left">Forgot password?</a>
+                                    
+                                </div>
+                            </div>
+                            
+                                <div class="clearfix">
+                                    <input type="submit" value="LOGIN" class="btn btn-primary pull-right"  >
+                                </div>
+                            
+                        </form>
+                    </div>
+					<div id="response-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        function checklogin(formid){
+            $(document).ready(function() {
+            var form = $('#'+formid);
+            var data = new FormData(form[0]);
+            $.ajax({
+                url: "{{url('api/auth/login')}}",
+                headers: {
+                    'X-CSRF-Token': '{{csrf_token()}}',
+                },
+                type: "POST",
+                data: data,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Handle successful response
+                    console.log("response:", response);
+                    if(response['status'] == 'ok'){
+                        new PNotify({text:response['msg'],type:'success',icon:'ti ti-info-alt',styling:'fontawesome'});
+                        console.log("response['default-route']:", response['default-route']);
+                        setTimeout(function(){
+                            
+                            window.location = response['default-route']; 
+                        },2000);
+                    }else{
+                        new PNotify({text:response['msg'],type:'success',icon:'ti ti-info-alt',styling:'fontawesome'});
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.log("xhr:", xhr);
+                    if(xhr.status == '403'){
+                        new PNotify({text:xhr.responseJSON['msg'], type:'error',icon:'ti ti-info-alt',styling:'fontawesome'});
+                    }
+                    console.log("status:", status);
+                    console.log("error:", error);
+                }
+            });
+        });
+        }
+
+
+    </script>
+@endsection
