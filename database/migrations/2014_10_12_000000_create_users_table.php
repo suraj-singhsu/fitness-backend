@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone')->nullable()->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->unsignedBigInteger('role_id')->default(2)->comment('1=sadmin, 2=user');
+            $table->unsignedBigInteger('role_id')->default(2)->comment('1=Sadmin 2=Memeber 3=Trainer');
 
             // Step 2: Add foreign key
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');

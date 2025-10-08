@@ -18,11 +18,6 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // Get Super Admin role ID
-        $superAdminRoleId = DB::table('roles')
-            ->where('role_code', 'super_admin')
-            ->value('id');
-
         // Seed default Super Admin user
         DB::table('users')->updateOrInsert(
             ['email' => 'sadmin@yopmail.com'],
@@ -30,7 +25,22 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Super Admin',
                 'email' => 'sadmin@yopmail.com',
                 'password' => bcrypt('12345678'),
-                'role_id' => $superAdminRoleId,
+                'role_id' => DB::table('roles')->where('role_code', 'super_admin')->value('id'),
+                'status' => true,
+                'is_email_verified' => true,
+                'is_phone_verified' => true,
+                'email_verified_at' => now(),
+                'created_at' => now(),
+            ]
+        );
+
+        DB::table('users')->updateOrInsert(
+            ['email' => 'demo@yopmail.com'],
+            [
+                'name' => 'Demo',
+                'email' => 'demo@yopmail.com',
+                'password' => bcrypt('12345678'),
+                'role_id' => DB::table('roles')->where('role_code', 'user')->value('id'),
                 'status' => true,
                 'is_email_verified' => true,
                 'is_phone_verified' => true,

@@ -1,16 +1,13 @@
 @extends('admin.admin-master-layout2')
 @section('after-login-section')            
-    <ol class="breadcrumb" style="margin:0px;">
-        <li><a href="javascript:void(0)">Setup</a></li>
-        <li><a href="javascript:void(0)">Manage Roles</a></li>
-    </ol>
     <div class="container-fluid"> 
         <div data-widget-group="group1">
             <div class="row">
+                
                 <div class="col-md-12">
-                    <div class="panel panel-dark">
+                    <div class="panel panel-midnightblue">
                         <div class="panel-heading">
-                            <h2>User Lists</h2>
+                            <h2>Provider Lists</h2>
                             <div class="panel-ctrls"></div>
                         </div>
                         <div class="panel-body no-padding">
@@ -82,5 +79,5 @@
                 </div>
             </div>
         </div>
-    </div> <!-- .container-fluid -->
+    </div>
 @endsection

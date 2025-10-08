@@ -20,24 +20,61 @@
                         <li class="nav-separator"><span>Menu</span></li>
                         <li><a href="{{url('admin/dashboard')}}"><i class="ti ti-home"></i><span>Dashboard</span></a></li>
                         
-                        <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Manage Users</span></a>
+                        <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>User Management</span></a>
                             <ul class="acc-menu">
-                                <li><a href="{{url('admin/manage-users')}}">View Users</a></li>
-                                <li><a href="{{url('admin/add-user')}}">Add User</a></li>
-                                <li><a href="{{url('admin/manage-roles')}}">Roles</a></li>
+                                <li><a href="{{url('users/list')}}">All Users</a></li>
+                                <li><a href="{{url('users/add')}}">Add New User</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>Provider Management</span></a>
+                            <ul class="acc-menu">
+                                <li><a href="{{url('providers/list')}}">All Providers</a></li>
+                                <li><a href="{{url('providers/add')}}">Add New Provider</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>Service Management</span></a>
+                            <ul class="acc-menu">
+                                <li><a href="{{url('services/list')}}">All Services</a></li>
+                                <li><a href="{{url('services/categories')}}">All Categories</a></li>
+                            </ul>
+                        </li>
+                       
+
+                        <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Plans</span></a>
+                            <ul class="acc-menu">
+                                <li><a href="{{url('plan/list')}}">View</a></li>
+                                <li><a href="{{url('plan/add')}}">Add New</a></li>
                             </ul>
                         </li>
                       
                         
-                        <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Settings</span></a>
+                        <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>CMS</span></a>
                             <ul class="acc-menu">
-
-                                <!-- <li><a href="{{url('admin/countries')}}">Manage CMS</a></li> -->
-                                <li><a href="{{url('admin/countries')}}">Manage Country</a></li>
-                                <li><a href="{{url('admin/states')}}">Manage State</a></li>
-                                <li><a href="{{url('admin/cities')}}">Manage City</a></li>
+                                <li><a href="{{url('cms/view')}}">View</a></li>
+                                <li><a href="{{url('cms/add')}}">Add New</a></li>
                             </ul>
                         </li>
+
+
+                        <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Setup</span></a>
+                            <ul class="acc-menu">
+                                <li><a href="{{url('admin/manage-roles')}}">Manage Roles</a></li>
+                                <li><a href="{{url('/email-template/list')}}" >Email Tempates</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Location Management</span></a>
+                            <ul class="acc-menu">
+                                <li><a href="{{url('/countries')}}">Manage Country</a></li>
+                                <li><a href="{{url('/states')}}">Manage State</a></li>
+                                <li><a href="{{url('/cities')}}">Manage City</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        
+
                     </ul>
                 </nav>
             </div>

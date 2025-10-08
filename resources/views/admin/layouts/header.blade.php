@@ -8,8 +8,13 @@
 				</span>
 			</a>
 		</span>
+		<span style="font-size: 25px;
+			color: #908d8de8; width:180px;
+			font-family: cursive;
+			margin-top: 9px;">SewaSetu</span>
 		
-		<a class="navbar-brand" href="javascript:void(0)">SVISchool</a>
+		
+		<!-- <a class="navbar-brand" href="javascript:void(0)">SVISchool</a> -->
 
 		<div class="toolbar-icon-bg hidden-xs" id="toolbar-search">
             <div class="input-group">

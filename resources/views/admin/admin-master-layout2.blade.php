@@ -2,7 +2,7 @@
 <html lang="en" class="coming-soon">
 	<head>
 	    <meta charset="utf-8">
-	    <title>SVIS Admin</title>
+	    <title>SewaSetu</title>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	    <meta name="apple-mobile-web-app-capable" content="yes">
@@ -63,6 +63,9 @@
                 margin-bottom: 20px !important;
             }
         </style>
+
+        <!-- Editor -->
+        <link type="text/css" href="{{asset('admin-assets/plugins/form-pagedown/css/jquery.pagedown-bootstrap.css')}}" rel="stylesheet" />
     </head>
     <body class=" animated-content">
         @include("admin.layouts.header")
@@ -71,7 +74,7 @@
                 @include("admin.layouts.sidemenu")
                 <div class="static-content-wrapper">
                     <div class="static-content">
-                        <div class="page-content">
+                        <div class="page-content mb mt">
                             @yield('after-login-section')
                         </div>    
                     </div>
@@ -118,9 +121,16 @@
         <script type="text/javascript" src="{{asset('admin-assets/plugins/datatables/dataTables.bootstrap.js')}}"></script>    
         <script type="text/javascript" src="{{asset('admin-assets/demo/demo-datatables.js')}}"></script>
         <script type="text/javascript" src="{{asset('admin-assets/plugins/bootbox/bootbox.js')}}"></script>
-        {{-- <script type="text/javascript" src="{{asset('admin-assets/plugins/jquery-chained/jquery.chained.min.js"')}}"></script> --}}
+         <!-- <script type="text/javascript" src="{{asset('admin-assets/plugins/jquery-chained/jquery.chained.min.js"')}}"></script> -->
         <script type="text/javascript" src="{{asset('admin-assets/plugins/jquery-mousewheel/jquery.mousewheel.min.js')}}"></script>
         
-        {{-- <script type="text/javascript" src="{{asset('admin-assets/demo/demo-modals.js')}}"></script> --}}
+        <!-- <script type="text/javascript" src="{{asset('admin-assets/demo/demo-modals.js')}}"></script> -->
+        <script type="text/javascript" src="{{asset('admin-assets/plugins/form-pagedown/js/jquery.pagedown-bootstrap.combined.js')}}"></script> 
+        <script>
+        $(function () {
+            $("textarea#pagedownMe").pagedownBootstrap();
+            $('.wmd-preview').addClass('well');
+        });
+        </script>
     </body>
 </html>

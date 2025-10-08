@@ -7,10 +7,24 @@ use Illuminate\Http\Request;
 use DB;
 class DashboardController extends Controller
 {
+    function add_email_template(){
+        return view('admin.pages.email-template.add');
+    }
+
+    function email_template_list(){
+        return view('admin.pages.email-template.list');
+    }
+
+    function viewCMS(){
+        return view('admin.pages.cms.view-cms');   
+    }
+    function addCMS(){
+        return view('admin.pages.cms.add-cms');   
+    }
     function index(){
         return view('admin.pages.dashboard');   
     }
-
+    
     function manageRoles(){
         $data = array();
         $data['roles'] = \App\Models\Role::all();
@@ -29,7 +43,7 @@ class DashboardController extends Controller
         $data['countries'] = DB::select("select * from countries where country_code = 'IN'");
         $data['states'] = DB::select("select * from states where country_id = '101'");
         // dd($data);
-        return view('admin.pages.add-user', $data); 
+        return view('admin.pages.user.add-user', $data); 
     }
 
     function changePassword(){

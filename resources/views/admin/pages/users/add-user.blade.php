@@ -1,9 +1,5 @@
 @extends('admin.admin-master-layout2')
 @section('after-login-section')            
-    <ol class="breadcrumb">
-        <li><a href="{{url('admin/manager-users')}}">Manage User</a></li>
-        <li><a href="{{url('admin/add-user')}}">Add</a></li>
-    </ol>
     <div class="container-fluid"> 
         <div id="api-msg" class="alert hide"></div>
         <div data-widget-group="group1">
@@ -11,7 +7,7 @@
                 <div class="col-sm-12">
                     <div class="panel panel-midnightblue">
                         <div class="panel-heading">
-                            <h2>Manger Teachers</h2>
+                            <h2>Add New User</h2>
                         </div>
                         <div class="panel-body">
                             <form onsubmit="return false" method="POST" class="form-horizontal row-border" id="validate-form" data-parsley-validate >
