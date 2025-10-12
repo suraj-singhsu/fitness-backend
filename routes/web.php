@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\GlanceController;
 // use App\Http\Controllers\WorkoutController;
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +16,18 @@ use App\Http\Controllers\GlanceController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
-// Route::get('/', function () {
-//     return view('login');
-// });
-// Route::resource('/workout','WorkoutController');
+Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');
 
 
-Route::prefix('glance')->group(function () {
-    Route::match(['get', 'post'], '/login', [GlanceController::class, 'login'])->name('glance.login');
-    Route::get('dashboard', [GlanceController::class, 'dashboard'])->name('glance.dashboard');
-    Route::get('manage-roles', [GlanceController::class, 'manageRoles'])->name('glance.manageRoles');
-
+Route::prefix('address')->group(function () {
+   Route::get('new', [DashboardController::class, 'add_new_address'])->name('address.add_new_address');
+   Route::get('countries', [DashboardController::class, 'viewCountries'])->name('dashboard.viewCountries');
+   Route::get('states', [DashboardController::class, 'viewStates'])->name('dashboard.viewStates');
+   Route::get('cities', [DashboardController::class, 'viewCities'])->name('dashboard.viewCities');
 });
-
+Route::prefix('document')->group(function () {
+   Route::get('new', [DashboardController::class, 'new_document'])->name('document.new');
+});
 Route::prefix('cms')->group(function () {
     Route::get('view', [DashboardController::class, 'viewCMS'])->name('cms.viewCMS');
     Route::get('add', [DashboardController::class, 'addCMS'])->name('cms.addCMS');
@@ -54,15 +48,21 @@ Route::prefix('providers')->group(function () {
     Route::post('insert', [UserController::class, 'insert_provider'])->name('providers.insert');
 });
 
+Route::prefix('category')->group(function () {
+   Route::get('list', [ServiceController::class, 'manageCategories'])->name('category.list');
+   Route::get('add/{id?}', [ServiceController::class, 'addCategoryForm'])->name('category.add');
+   Route::get('edit/{id?}', [ServiceController::class, 'editCategoryForm'])->name('category.edit');
+   Route::post('insert-update', [ServiceController::class, 'insertUpdateCategory'])->name('category.insert-update');
+   Route::delete('delete/{id}', [ServiceController::class, 'categoryDelete'])->name('category.delete');
+});
 Route::prefix('services')->group(function () {
-    Route::get('list', [ServiceController::class, 'manage_services'])->name('services.list');
-    Route::get('categories', [ServiceController::class, 'manage_categories'])->name('services.categories');
+
+   Route::get('list', [ServiceController::class, 'manage_services'])->name('services.list');
+
+   Route::get('new-service', [ServiceController::class, 'new_service'])->name('services.new_service');
 });
 
-Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');
-Route::get('countries', [DashboardController::class, 'viewCountries'])->name('dashboard.viewCountries');
-Route::get('states', [DashboardController::class, 'viewStates'])->name('dashboard.viewStates');
-Route::get('cities', [DashboardController::class, 'viewCities'])->name('dashboard.viewCities');
+    
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {    
     

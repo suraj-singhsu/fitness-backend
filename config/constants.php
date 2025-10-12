@@ -15,4 +15,18 @@ return [
             'role_code' => 'user'
         ),
     ),
+    'document_types' => Array(
+        Array(
+            'name' => 'Aadhar Card',
+            'code' => 'aadhar_card'
+        ),
+        Array(
+            'name' => 'Driving License',
+            'code' => 'driving_license'
+        ),
+        Array(
+            'name'      => 'Pan Card',
+            'code' => 'pan_card'
+        ),
+    ),
 ];

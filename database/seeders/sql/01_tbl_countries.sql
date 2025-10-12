@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2025 at 04:13 AM
+-- Generation Time: Oct 11, 2025 at 01:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,16 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fitness_db`
+-- Database: `sewasetu_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Table structure for table `tbl_countries`
 --
 
-CREATE TABLE `countries` (
+CREATE TABLE `tbl_countries` (
   `id` int(11) NOT NULL,
   `country_code` varchar(255) DEFAULT NULL,
   `name` varchar(150) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `countries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `countries`
+-- Dumping data for table `tbl_countries`
 --
 
-INSERT INTO `countries` (`id`, `country_code`, `name`, `phonecode`, `status`) VALUES
+INSERT INTO `tbl_countries` (`id`, `country_code`, `name`, `phonecode`, `status`) VALUES
 (1, 'AF', 'Afghanistan', 93, 'inactive'),
 (2, 'AL', 'Albania', 355, 'inactive'),
 (3, 'DZ', 'Algeria', 213, 'inactive'),
@@ -292,9 +292,9 @@ INSERT INTO `countries` (`id`, `country_code`, `name`, `phonecode`, `status`) VA
 --
 
 --
--- Indexes for table `countries`
+-- Indexes for table `tbl_countries`
 --
-ALTER TABLE `countries`
+ALTER TABLE `tbl_countries`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -302,9 +302,9 @@ ALTER TABLE `countries`
 --
 
 --
--- AUTO_INCREMENT for table `countries`
+-- AUTO_INCREMENT for table `tbl_countries`
 --
-ALTER TABLE `countries`
+ALTER TABLE `tbl_countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 COMMIT;
 

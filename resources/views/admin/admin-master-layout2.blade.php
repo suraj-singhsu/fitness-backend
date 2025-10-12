@@ -75,7 +75,22 @@
                 <div class="static-content-wrapper">
                     <div class="static-content">
                         <div class="page-content mb mt">
-                            @yield('after-login-section')
+                           <div class="container-fluid"> 
+                              @if (session('success'))
+                                 <div class="alert alert-dismissable alert-success mb p">
+                                    <i class="ti ti-check"></i>&nbsp; {{session('success')}}
+                                    <button type="button" class="close " data-dismiss="alert" aria-hidden="true">&times;</button>
+                                 </div>
+                              @endif
+
+                              @if (session('error'))
+                              <div class="alert alert-dismissable alert-danger mb p">
+                                 <i class="ti ti-close"></i>&nbsp; {{session('error')}}
+                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              </div>
+                              @endif
+                              @yield('after-login-section')
+                           </div>    
                         </div>    
                     </div>
                 </div>
