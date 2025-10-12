@@ -1,10 +1,13 @@
 @extends('admin.admin-master-layout2')
 @section('after-login-section')            
-    <div class="container-fluid"> 
-        <div data-widget-group="group1">
+   
             <div class="row">
                 <div class="col-md-12">
-                    <ion-button class="btn btn-midnightblue mb">Add New Category</ion-button>
+                    <a href="{{route('category.add')}}" class="btn btn-default mb">Add Category</a>
+                    @if($parentInfo)
+                    <a href="{{route('category.add', $parent_id)}}" class="btn btn-default mb">Add Sub Category</a>
+                    <a href="{{route('category.list')}}" class="btn btn-default mb">View All </a>
+                    @endif
                     <div class="panel panel-midnightblue">
                         <div class="panel-heading">
                             <h2>Categories</h2>
@@ -15,58 +18,49 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th><i class="fa fa-user"></i></th>
-                                        <th>Name</th>
-                                        <th>Role</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
+                                        <th>Category</th>
+                                        @if($parentInfo)
+                                        <th>Parent</th>
+                                        @endif
+                                        <th>Description</th>
+                                        <th>Thumbnail</th>
+                                        <th>Banner</th>
+                                        <th>Order</th>
                                         <th>Status</th>
-                                        <th>Created</th>
+                                        <!-- <th>CreatedBy</th>
+                                        <th>UpdatedBy</th> -->
+                                        <th>Sub Category</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $key => $value)
+                                    @foreach($service_categories as $key => $value)
                                         <tr class="odd gradeX">
-                                            <td>{{$key+1}}</td>
+                                             <td>{{$key+1}}</td>
+                                             <td>{{$value->name}}</td>
+                                             @if($parentInfo)
+                                             <th>{{$parentInfo->name}}</th>
+                                             @endif
+                                            <td>{{$value->description}}</td>
+                                            <td>{{$value->thumbnail_image ?? 'N/A' }}</td>
+                                            <td>{{$value->banner_image ?? 'N/A' }}</td>
+                                            <td>{{$value->sort_order}}</td>
                                             <td>
-                                                @if($value->profile_image != '')
-                                                    <img src="{{$value->profile_image}}">
-                                                @else
-                                                    <i class="fa fa-user"></i>
+                                                <input class="bootstrap-switch switch-alt" type="checkbox" {{($value->status == 1) ? 'checked' : '' }} data-on-color="success" data-off-color="danger" data-size="small"/>
+                                             </td>
+                                             <td>
+                                                <a href="{{route('category.add', $value->id)}}" class="btn btn-default"><i class="ti ti-plus"></i></a>
+                                                @if($value->children_count > 0)
+                                                <a href="{{route('category.list', ['parent_id' => $value->id])}}" class="btn btn-default"><i class="ti ti-list"></i> ({{$value->children_count}})</a>
                                                 @endif
-                                            </td>
-                                            <td>{{$value->name}}</td>
-                                            <td>{{$value->role->name}} ({{$value->role->role_code}})</td>
-                                            <td>
-                                                {{ $value->email ?? 'N/A' }}
-                                                @if($value->email != '')
-                                                    @if($value->is_email_verified == false)
-                                                        <i class="fa fa-warning text-warning"></i>
-                                                    @else
-                                                        <i class="fa fa-check text-success"></i>
-                                                    @endif
-                                                @endif
-                                            </td>
-                                            <td>
-
-                                                {{ $value->phone ?? 'N/A' }}
-                                                @if($value->phone != '')
-                                                    @if($value->is_phone_verified == true)
-                                                        <i class="fa fa-check text-success"></i>
-                                                    @else
-                                                        <i class="fa fa-warning text-warning"></i>
-                                                    @endif
-                                                @endif
-                                        
-                                            </td>
-                                            <td>{{$value->status}}</td>
-                                            <td>{{$value->created_at ?? 'N/A'}}</td>
+                                             </td>
                                             <td class="text-center">
-                                                @if($value->role_id != 1)
-                                                    <a onClick="setData(this)" href="javascript:void(0)" class="btn btn-success btn-sm"  data-role_id={{$value->id}} data-role={{$value->role}} data-name={{$value->name}} data-status={{$value->status}}><i class="fa fa-pencil"></i></a>
-                                                    <a onClick="delete_confirmation(this, {{$value->id}})" href="javascript:void(0)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                                @endif
+     <a href="{{route('category.edit', $value->id)}}" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></a>
+                        <form onsubmit="return confirm('Are you sure you want to delete this category?');" method="POST" action="{{route('category.delete', $value->id)}}">
+                           @csrf
+                           @method('DELETE')
+                           <button class="btn btn-danger btn-sm" type=submit><i class="fa fa-trash"></i></button>
+                        </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -78,6 +72,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+      
 @endsection

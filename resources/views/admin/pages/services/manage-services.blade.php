@@ -4,6 +4,7 @@
         <div data-widget-group="group1">
             <div class="row">
                 <div class="col-md-12">
+                     <a href="{{url('services/new-service')}}" class="btn btn-midnightblue mb">Add New Service</a>
                     <ion-button class="btn btn-midnightblue mb">Add New Service</ion-button>
                     <div class="panel panel-midnightblue">
                         <div class="panel-heading">

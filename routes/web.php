@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\GlanceController;
 // use App\Http\Controllers\WorkoutController;
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +62,18 @@ Route::prefix('providers')->group(function () {
     Route::post('insert', [UserController::class, 'insert_provider'])->name('providers.insert');
 });
 
+Route::prefix('category')->group(function () {
+   Route::get('list', [ServiceController::class, 'manageCategories'])->name('category.list');
+   Route::get('add/{id?}', [ServiceController::class, 'addCategoryForm'])->name('category.add');
+   Route::get('edit/{id?}', [ServiceController::class, 'editCategoryForm'])->name('category.edit');
+   Route::post('insert-update', [ServiceController::class, 'insertUpdateCategory'])->name('category.insert-update');
+   Route::delete('delete/{id}', [ServiceController::class, 'categoryDelete'])->name('category.delete');
+});
 Route::prefix('services')->group(function () {
-    Route::get('list', [ServiceController::class, 'manage_services'])->name('services.list');
-    Route::get('categories', [ServiceController::class, 'manage_categories'])->name('services.categories');
+
+   Route::get('list', [ServiceController::class, 'manage_services'])->name('services.list');
+
+   Route::get('new-service', [ServiceController::class, 'new_service'])->name('services.new_service');
 });
 
 Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');

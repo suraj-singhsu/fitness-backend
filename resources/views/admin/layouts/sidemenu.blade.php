@@ -36,7 +36,7 @@
                         <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>Service Management</span></a>
                             <ul class="acc-menu">
                                 <li><a href="{{url('services/list')}}">All Services</a></li>
-                                <li><a href="{{url('services/categories')}}">All Categories</a></li>
+                                <li><a href="{{ route('category.list') }}">All Categories</a></li>
                             </ul>
                         </li>
                        
@@ -66,9 +66,9 @@
                         
                         <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Location Management</span></a>
                             <ul class="acc-menu">
-                                <li><a href="{{url('/countries')}}">Manage Country</a></li>
-                                <li><a href="{{url('/states')}}">Manage State</a></li>
-                                <li><a href="{{url('/cities')}}">Manage City</a></li>
+                                <li><a href="{{url('/address/countries')}}">Manage Country</a></li>
+                                <li><a href="{{url('/address/states')}}">Manage State</a></li>
+                                <li><a href="{{url('/address/cities')}}">Manage City</a></li>
                             </ul>
                         </li>
 
