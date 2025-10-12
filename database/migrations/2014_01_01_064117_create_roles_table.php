@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();   // e.g. "Admin"
-            $table->string('role_code')->unique();   // e.g. "admin"
+            $table->string('code')->unique();   // e.g. "admin"
+            $table->enum('status',[1,0])->default(1);  //1-Active and 0-Inactive 
             $table->timestamps();
         });
     }

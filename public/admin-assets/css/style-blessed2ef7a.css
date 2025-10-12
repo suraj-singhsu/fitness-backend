@@ -4339,7 +4339,7 @@ body.topnav-collapsed header.navbar.navbar-default .navbar-collapse .open .tt-dr
 .alert {
   border-width: 0;
   border-style: solid;
-  padding: 24px;
+  padding: 10px;
   margin-bottom: 32px;
 }
 .alert > h1,
