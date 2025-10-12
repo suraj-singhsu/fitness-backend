@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
         $roles = config('constants.roles');
         foreach ($roles as $role) {
             DB::table('roles')->updateOrInsert(
-                ['role_code' => $role['role_code']],
+                ['code' => $role['code']],
                 ['name' => $role['name']]
             );
         }
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Super Admin',
                 'email' => 'sadmin@yopmail.com',
                 'password' => bcrypt('12345678'),
-                'role_id' => DB::table('roles')->where('role_code', 'super_admin')->value('id'),
+                'role_id' => DB::table('roles')->where('code', 'super_admin')->value('id'),
                 'status' => true,
                 'is_email_verified' => true,
                 'is_phone_verified' => true,
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Demo',
                 'email' => 'demo@yopmail.com',
                 'password' => bcrypt('12345678'),
-                'role_id' => DB::table('roles')->where('role_code', 'user')->value('id'),
+                'role_id' => DB::table('roles')->where('code', 'user')->value('id'),
                 'status' => true,
                 'is_email_verified' => true,
                 'is_phone_verified' => true,

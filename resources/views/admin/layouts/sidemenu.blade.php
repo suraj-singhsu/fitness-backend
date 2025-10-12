@@ -22,8 +22,9 @@
                         
                         <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>User Management</span></a>
                             <ul class="acc-menu">
-                                <li><a href="{{url('users/list')}}">All Users</a></li>
-                                <li><a href="{{url('users/add')}}">Add New User</a></li>
+                                <li><a href="{{ route('role.index') }}">Manage Role</a></li>
+                                <li><a href="{{ route('users.index') }}">Manage Users</a></li>
+                                <!-- <li><a href="{{url('users/add')}}">Add New User</a></li> -->
                             </ul>
                         </li>
                         <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>Provider Management</span></a>
