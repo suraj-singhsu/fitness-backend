@@ -22,7 +22,7 @@
                         
                         <li><a href="javascript:void(0);"><i class="ti ti-user"></i><span>User Management</span></a>
                             <ul class="acc-menu">
-                                <li><a href="{{ route('role.index') }}">Manage Role</a></li>
+                                
                                 <li><a href="{{ route('users.index') }}">Manage Users</a></li>
                                 <!-- <li><a href="{{url('users/add')}}">Add New User</a></li> -->
                             </ul>
@@ -59,7 +59,7 @@
 
                         <li><a href="javascript:void(0);"><i class="ti ti-layout"></i><span>Setup</span></a>
                             <ul class="acc-menu">
-                                <li><a href="{{url('admin/manage-roles')}}">Manage Roles</a></li>
+                                <li><a href="{{ route('role.index') }}">Manage Role</a></li>
                                 <li><a href="{{url('/email-template/list')}}" >Email Tempates</a></li>
                             </ul>
                         </li>

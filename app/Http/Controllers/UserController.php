@@ -23,8 +23,9 @@ class UserController extends Controller
         $data= array();
         $data['roles'] = \App\Models\Role::all();
         $data['users'] = \App\Models\User::all(); 
-        $data['countries'] = DB::select("select * from countries where country_code = 'IN'");
-        $data['states'] = DB::select("select * from states where country_id = '101'");
+      //   $data['countries'] = DB::select("select * from countries where country_code = 'IN'");
+        $data['countries'] = \App\Models\Country::where('country_code', 'IN')->get();
+        $data['countries'] = \App\Models\State::where('country_id', '101')->get();
         return view('admin.pages.providers.add-provider', $data);
     }
     function manage_providers (){

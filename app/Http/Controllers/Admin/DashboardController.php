@@ -24,12 +24,6 @@ class DashboardController extends Controller
     function index(){
         return view('admin.pages.dashboard');   
     }
-    
-    function manageRoles(){
-        $data = array();
-        $data['roles'] = \App\Models\Role::all();
-        return view('admin.pages.manage-roles', $data); 
-    }
 
     function manageUsers(){
         $data = array();

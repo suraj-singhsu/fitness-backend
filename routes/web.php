@@ -80,14 +80,14 @@ Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name(
 Route::get('countries', [DashboardController::class, 'viewCountries'])->name('dashboard.viewCountries');
 Route::get('states', [DashboardController::class, 'viewStates'])->name('dashboard.viewStates');
 Route::get('cities', [DashboardController::class, 'viewCities'])->name('dashboard.viewCities');
-   
+Route::prefix('address')->group(function () {
+   Route::get('new', [DashboardController::class, 'add_new_address'])->name('address.new');
+
+});
 Route::middleware(['auth'])->prefix('admin')->group(function () {    
     
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    // Route::get('manage-roles', [DashboardController::class, 'manageRoles'])->name('role.index');
-    // Route::post('add-roles', [DashboardController::class, 'addRoles'])->name('role.add');
-    // Route::put('edit-roles/{id}', [DashboardController::class, 'editRoles'])->name('role.edit');
-
+   
     Route::get('manage-users', [DashboardController::class, 'manageUsers'])->name('dashboard.manageUsers');
     Route::get('add-user', [DashboardController::class, 'addUser'])->name('dashboard.addUser');
     
